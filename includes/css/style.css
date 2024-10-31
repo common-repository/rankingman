@@ -1,0 +1,827 @@
+@charset "UTF-8";
+/*
+Plugin Name: RankingMan
+Plugin URI: https://meet-good-one.fit/plugin/
+Description: 簡単にランキングを生成するアフィリエイトツール
+Version: 1.0.3
+Author: HaSSS→
+Author URI: http://meet-good-one.fit/
+*/
+
+/************************/
+/*  fontawesome
+/************************/
+.fa-arrow-circle-right::after {
+    content:'\f0a9';
+    font-family:'Font Awesome 5 Free';
+    font-weight:900;
+}
+
+/************************/
+/*  ranking
+/************************/
+.ranking_set_item{
+    min-width:90px;
+    display:inline-block;
+}
+
+.rank {
+    margin-bottom: 10px;
+    padding: 20px 0;
+    position: relative;
+}
+
+/************************/
+/*  container
+/************************/
+
+.rank-container.default {
+    display: block;
+    text-align: left;
+    background-color: #f2e4ba;
+    border: 2px solid #ddc372;
+    padding: 3px;
+    margin-bottom: 2em;
+}
+
+.rank-inner.default {
+    background-image: url(../../images/rank_background.gif);
+    background-position: left top;
+    background-repeat: repeat;
+    border: 1px solid #e0c77a;
+    padding: 20px;
+    position: relative;
+}
+
+.rank-container.type1 {
+    display: block;
+    text-align: left;
+    background-color: white;
+    border: 3px solid gray;
+    padding: 3px;
+    margin-bottom: 2em;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.rank-inner.type1 {
+    background-position: left top;
+    background-repeat: repeat;
+    padding: 20px;
+    position: relative;
+    background-color: white;
+}
+
+.rank-container.type2 {
+    display: block;
+    text-align: left;
+    background-color: white;
+    border: 3px solid #f9e5b1;
+    padding: 3px;
+    margin-bottom: 2em;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.rank-inner.type2 {
+    background-position: left top;
+    background-repeat: repeat;
+    border: 1px solid #f7d461;
+    padding: 20px;
+    position: relative;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.rank-container.type3 {
+    display: block;
+    text-align: left;
+    border: 3px solid #f9e5b1;
+    margin-bottom: 2em;
+    border: dashed 2px #c6d5f7;
+    box-shadow: 0px 0px 0px 10px #f1f8ff;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.rank-inner.type3 {
+    background-position: left top;
+    background-repeat: repeat;
+    padding: 20px;
+    position: relative;
+    background: #f1f8ff;
+}
+
+.rank .rank1, .rank .rank2, .rank .rank3, .rank .rank4, .rank .rank5, .rank .rank6, .rank .rank7, .rank .rank8, .rank .rank9, .rank .rank10, .rank .rank99 {
+    margin: 0;
+}
+.rank img {
+    height: 70px;
+    padding-right: 15px;
+}
+.rank1, .rank2, .rank3 {
+    background-position: left top;
+    padding: 22px 0 18px 10px;
+}
+.rank1, .rank2, .rank3, .rank4, .rank5, .rank6, .rank7, .rank8, .rank9, .rank10, .rank99 {
+    background-repeat: no-repeat;
+    border: medium none;
+    color: #717172;
+    font-size: 28px;
+    height: auto;
+    line-height: 1.3;
+    margin-bottom: 6px;
+    margin-top: 6px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+@media screen and (max-width: 420px) {
+.rank1, .rank2, .rank3, .rank4, .rank5, .rank6, .rank7, .rank8, .rank9, .rank10, .rank99 {
+    background-repeat: no-repeat;
+    border: medium none;
+    color: #717172;
+    font-size: 22px;
+    height: auto;
+    line-height: 1.3;
+    margin-bottom: 6px;
+    margin-top: 6px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+}
+.rankbox {
+    padding-top: 10px;
+}
+.rankbox .rankbox-inner {
+    overflow: hidden;
+}
+.rankbox .rank-table {
+    border-collapse: separate;
+    border-spacing: 2px;
+    clear: both;
+    margin: 0;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+    background: transparent;
+    border: 0 !important;
+    font-size: 100%;
+    outline: 0;
+    vertical-align: baseline;
+}
+.rankbox .rank-table th {
+    background-color: #f7f1d9;
+    background-position: left top;
+    background-repeat: no-repeat;
+    font-weight: bolder;
+    width: 20%;
+}
+.rankbox .rank-table td {
+    background-color: #ffffff;
+}
+.rankbox .rank-table th, .rankbox .rank-table td {
+    color: #2e2e2e;
+    border: 1px solid #f0e4bd;
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+td, th {
+    word-break: break-all !important;
+}
+.rank .more {
+    font-size: 0;
+    letter-spacing: -.40em;
+    padding: 25px 0 10px;
+    position: relative;
+    text-align: center;
+}
+span.official {
+    margin-right: 0;
+}
+span.official a {
+    box-shadow: none;
+}
+.rank .more span {
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: normal;
+    margin-right: 20px;
+    vertical-align: bottom;
+    *display: inline;
+    *zoom: 1;
+}
+
+.rank .more span a {
+    background-image: url(img/button_more.png);
+    background-position: left top;
+    background-repeat: no-repeat;
+    display: block;
+    height: 50px;
+    overflow: hidden;
+    text-indent: 200%;
+    white-space: nowrap;
+    width: 250px;
+}
+.more {
+    margin: 10px 0;
+}
+
+/************************/
+/*  button
+/************************/
+.ranking_box .rm_btn{
+    min-width: 70%;
+    font-size: 17px;
+    text-align: center;
+    display: table;
+    padding: 15px 0 10px;
+    border-radius: 5px;
+    margin: auto;
+    height: 50px;
+    text-decoration: none !important;
+}
+
+@media screen and (max-width: 640px) {
+.ranking_box .rm_btn{
+    min-width: 100%;
+    font-size: 17px;
+    text-align: center;
+    display: table;
+    padding: 15px 0 10px;
+    border-radius: 5px;
+    margin: auto;
+    height: 50px;
+    text-decoration: none !important;
+}
+}
+.ranking_box .rm_btn > span.default {
+    color: #FFFFFF !important;
+    background: #dc3545;
+    box-shadow: 1px 1px #ab5961;
+    min-width: 40%;
+    font-size: 17px;
+    text-align: center;
+    display: table;
+    padding: 15px 0 10px;
+    border-radius: 5px;
+    margin: auto;
+    height: 50px;
+}
+.ranking_box .rm_btn > span.blue {
+    color: #ffffff !important;
+    background: dodgerblue;
+    box-shadow: 1px 1px darkblue;
+    min-width: 40%;
+    font-size: 17px;
+    text-align: center;
+    display: table;
+    padding: 15px 0 10px;
+    border-radius: 5px;
+    margin: auto;
+    height: 50px;
+}
+.ranking_box .rm_btn > span.green {
+    color: #6c757d !important;
+    background: mediumspringgreen;
+    box-shadow: 1px 1px #28a745;
+    min-width: 40%;
+    font-size: 17px;
+    text-align: center;
+    display: table;
+    padding: 15px 0 10px;
+    border-radius: 5px;
+    margin: auto;
+    height: 50px;
+}
+.ranking_box .rm_btn > span.orange {
+    color: #ffffff !important;
+    background: orange;
+    box-shadow: 1px 1px darkorange;
+    min-width: 40%;
+    font-size: 17px;
+    text-align: center;
+    display: table;
+    padding: 15px 0 10px;
+    border-radius: 5px;
+    margin: auto;
+    height: 50px;
+}
+.ranking_box .rm_btn > span.gray {
+    color: #ffffff !important;
+    background: gray;
+    box-shadow: 1px 1px darkslategrey;
+    min-width: 40%;
+    font-size: 17px;
+    text-align: center;
+    display: table;
+    padding: 15px 0 10px;
+    border-radius: 5px;
+    margin: auto;
+    height: 50px;
+}
+.ranking_box .rm_btn > span.pink {
+    color: #f8f9fa !important;
+    background: pink;
+    box-shadow: 1px 1px deeppink;
+    min-width: 40%;
+    font-size: 17px;
+    text-align: center;
+    display: table;
+    padding: 15px 0 10px;
+    border-radius: 5px;
+    margin: auto;
+    height: 50px;
+}
+.ranking_box .rm_btn > span.yellow {
+    color: #6c757d !important;
+    background: #f7f720;
+    box-shadow: 1px 1px #a6ad29;
+    min-width: 40%;
+    font-size: 17px;
+    text-align: center;
+    display: table;
+    padding: 15px 0 10px;
+    border-radius: 5px;
+    margin: auto;
+    height: 50px;
+}
+.ranking_box .rm_btn > span.lightblue {
+    color: #ffffff !important;
+    background: lightskyblue;
+    box-shadow: 1px 1px steelblue;
+    min-width: 40%;
+    font-size: 17px;
+    text-align: center;
+    display: table;
+    padding: 15px 0 10px;
+    border-radius: 5px;
+    margin: auto;
+    height: 50px;
+}
+.ranking_box .rm_btn > span.purple {
+    color: #ffffff !important;
+    background: mediumpurple;
+    box-shadow: 1px 1px purple;
+    min-width: 40%;
+    font-size: 17px;
+    text-align: center;
+    display: table;
+    padding: 15px 0 10px;
+    border-radius: 5px;
+    margin: auto;
+    height: 50px;
+}
+
+.ranking_box .button_action_type2:hover {
+    background-color: #59b1eb !important;
+    box-shadow: none;
+}
+
+.ranking_box .button_action_type3:hover {
+    color: #ff0000 !important;
+    box-shadow: none;
+}
+
+.ranking_box .button_action_type3:after {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: scale(.5);
+    transform: scale(.5);
+}
+
+.ranking_box .button_action_type3:hover::after {
+    background: #333 !important;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    box-shadow: none;
+}
+
+
+.ranking_box .css_default_rank1 {
+    padding: 10px 10px;
+    background: #fa0;
+    border-radius: 50%;
+    content: counter(wpp-ranking, decimal);
+    color: #fff;
+    top: 0;
+    left: 0;
+}
+.ranking_box .css_default_rank2 {
+    padding: 10px 10px;
+    background: #bbb;
+    border-radius: 50%;
+    content: counter(wpp-ranking, decimal);
+    color: #fff;
+    top: 0;
+    left: 0;
+}
+.ranking_box .css_default_rank3 {
+    padding: 10px 10px;
+    background: #930;
+    border-radius: 50%;
+    content: counter(wpp-ranking, decimal);
+    color: #fff;
+    top: 0;
+    left: 0;
+}
+
+/************************/
+/*  rank
+/************************/
+.ranking_box .css_type1_rank1 {
+    background-image: url(../../images/type1_rank1.jpg);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type1_rank2 {
+    background-image: url(../../images/type1_rank2.jpg);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type1_rank3 {
+    background-image: url(../../images/type1_rank3.jpg);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type2_rank1 {
+    background-image: url(../../images/type2_rank1.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type2_rank2 {
+    background-image: url(../../images/type2_rank2.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type2_rank3 {
+    background-image: url(../../images/type2_rank3.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type3_rank1 {
+    background-image: url(../../images/type3_rank1.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type3_rank2 {
+    background-image: url(../../images/type3_rank2.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type3_rank3 {
+    background-image: url(../../images/type3_rank3.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type4_rank1 {
+    background-image: url(../../images/type4_rank1.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type4_rank2 {
+    background-image: url(../../images/type4_rank2.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type4_rank3 {
+    background-image: url(../../images/type4_rank3.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type5_rank1 {
+    background-image: url(../../images/type5_rank1.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type5_rank2 {
+    background-image: url(../../images/type5_rank2.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type5_rank3 {
+    background-image: url(../../images/type5_rank3.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type6_rank1 {
+    background-image: url(../../images/type6_rank1.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type6_rank2 {
+    background-image: url(../../images/type6_rank2.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type6_rank3 {
+    background-image: url(../../images/type6_rank3.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type7_rank1 {
+    background-image: url(../../images/type7_rank1.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type7_rank2 {
+    background-image: url(../../images/type7_rank2.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type7_rank3 {
+    background-image: url(../../images/type7_rank3.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type8_rank1 {
+    background-image: url(../../images/type8_rank1.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type8_rank2 {
+    background-image: url(../../images/type8_rank2.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type8_rank3 {
+    background-image: url(../../images/type8_rank3.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type9_rank1 {
+    background-image: url(../../images/type9_rank1.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type9_rank2 {
+    background-image: url(../../images/type9_rank2.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type9_rank3 {
+    background-image: url(../../images/type9_rank3.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type10_rank1 {
+    background-image: url(../../images/type10_rank1.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type10_rank2 {
+    background-image: url(../../images/type10_rank2.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type10_rank3 {
+    background-image: url(../../images/type10_rank3.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type11_rank1 {
+    background-image: url(../../images/type11_rank1.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type11_rank2 {
+    background-image: url(../../images/type11_rank2.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+.ranking_box .css_type11_rank3 {
+    background-image: url(../../images/type11_rank3.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px 0px 10px 60px;
+    border-left: none;
+    border-bottom: 0px;
+    background-size: contain;
+}
+
+/************************/
+/*  rate
+/************************/
+
+.ranking_box .rate_image {
+    max-width: 200px;
+}
+@media screen and (max-width: 420px) {
+.ranking_box .rate_image {
+    max-width: 100px;
+}
+}
+.ranking_box .tag_ul {
+    padding: 0;
+    position: relative;
+    margin-top: 2em;
+}
+.ranking_box .tag_li {
+    color: black;
+    border-left: solid 8px orange;
+    background: papayawhip;
+    margin-bottom: 5px;
+    line-height: 1.5;
+    border-radius: 0 15px 15px 0;
+    padding: 0.5em 2em 0.5em 0.5em;
+    list-style-type: none!important;
+    display: inline;
+    margin-right: 10px;
+}
